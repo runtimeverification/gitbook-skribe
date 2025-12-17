@@ -319,22 +319,6 @@ let contract_address = unsafe {
 
 The deployment process is the same as deploying Solidity contracts, but you use the wrapped init code instead of raw bytecode.
 
-**Alternative: Using skribe.json for contract dependencies**
-
-If your test contract depends on other Stylus contracts that should be deployed before the test runs, you can specify them in a `skribe.json` file. This is useful when your `set_up()` function (or an `init()` function) needs contract addresses as parameters.
-
-Create a `skribe.json` file in your test contract directory:
-
-```json
-{
-  "contracts": [
-    "../stylus-hello-world/target/wasm32-unknown-unknown/release/stylus_hello_world.wasm"
-  ]
-}
-```
-
-Skribe will deploy these contracts before running your tests and pass their addresses to your `init()` function in the order specified. If you use `set_up()` instead of `init()`, you can still access these contracts, but you'll need to deploy them manually in your `set_up()` function.
-
 **Complete Example**
 
 See the example in `test-hello-world/src/lib.rs` for a complete implementation that demonstrates deploying a Stylus contract from another Stylus test.
