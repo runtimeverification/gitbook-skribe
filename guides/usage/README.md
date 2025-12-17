@@ -95,39 +95,6 @@ Test function IDs use camelCase format. When referencing a Rust function named `
 
 During execution, Skribe displays progress bars for each test function. A test passes when it completes without panicking. A test fails if it panics or returns an error, at which point Skribe reports the failing input and execution details.
 
-## Simulation Tool
-
-Skribe includes a separate simulation tool for running concrete test scenarios defined in JSON format.
-
-### Basic Usage
-
-```bash
-skribe-simulation run path/to/test.json
-```
-
-### Options
-
-- `PROGRAM`: Path to a JSON file describing the test case as a sequence of simulation steps
-- `--output FORMAT`: Output format for the final state. Default is `kore`
-- `--depth DEPTH`: Maximum number of execution steps to simulate
-
-### JSON Test Format
-
-Test cases are written as JSON files containing a sequence of steps that deploy contracts, call functions, and check expected results. Common step types include:
-
-- `setExitCode`: Set the expected exit code
-- `setStylusContract`: Deploy a Stylus contract from a WASM file
-- `callStylus`: Call a function on a deployed contract and verify output
-
-### Debugging with krun
-
-For debugging purposes, you can generate an initial configuration term in Kore format:
-
-```bash
-skribe-simulation run path/to/test.json --depth 0 > initial-state.kore
-krun --definition $(kdist which stylus-semantics.llvm) initial-state.kore --parser cat --term
-```
-
 ## Common Workflows
 
 ### Complete Test Cycle
