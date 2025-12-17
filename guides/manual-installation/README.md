@@ -62,13 +62,21 @@ python3 -m pip install dist/*.whl
 
 This installs Skribe along with its dependencies including `kontrol`, `pykwasm`, and `kevm-pyk`.
 
-### Step 5: Configure Environment Variables
+### Step 5: Verify Installation
 
-Set the `KDIST_DIR` environment variable to point to where the semantics were built. The build directory is typically located in `~/.cache/kdist-*/`.
+Test that Skribe is installed correctly:
 
-**Troubleshooting Skribe's automatic configuration (recommended)**
+```bash
+skribe --help
+```
 
-If encountering errors related to a `Target undefined or not built`, more specifically the `kdist` `stylus-semantics.llvm`, add this to your shell configuration file (`~/.zshrc` for zsh or `~/.bashrc` for bash):
+You should see the Skribe command help output with `build` and `run` subcommands.
+
+### Step 5 (**if necessary**): Troubleshooting Skribe's automatic configuration
+
+If encountering errors related to a `Target undefined or not built`, more specifically the `kdist` `stylus-semantics.llvm`, set the `KDIST_DIR` environment variable to point to where the semantics were built. The build directory is typically located in `~/.cache/kdist-*/`.
+
+To do so, add this to your shell configuration file (`~/.zshrc` for zsh or `~/.bashrc` for bash):
 
 ```bash
 export KDIST_DIR=$(ls -td ~/.cache/kdist-* 2>/dev/null | head -1)
@@ -93,16 +101,6 @@ Set the environment variable in your current session or add to your shell profil
 ```bash
 export KDIST_DIR=/path/to/kdist-XXXXX
 ```
-
-### Step 6: Verify Installation
-
-Test that Skribe is installed correctly:
-
-```bash
-skribe --help
-```
-
-You should see the Skribe command help output with `build` and `run` subcommands.
 
 ## Optional: Installing KEVM
 
