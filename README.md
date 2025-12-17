@@ -1,6 +1,6 @@
 # Skribe
 
-Skribe is a fuzzer and property testing framework for Stylus smart contracts. It enables developers to write comprehensive test suites that automatically discover and validate contract behavior through fuzzing.
+Skribe is a fuzzer and property testing framework for Stylus and Solidity smart contracts. It enables developers to write comprehensive test suites that automatically discover and validate contract behavior through fuzzing.
 
 Stylus is Arbitrum's smart contract platform that allows developers to write contracts in Rust and compile them to WebAssembly. Leveraging the K framework's formal semantics, Skribe executes these contracts in a controlled testing environment, providing deep integration with the Stylus execution model.
 
