@@ -451,4 +451,4 @@ These examples are located in `src/tests/integration/data/contracts/` and serve 
 
 ## Running Tests
 
-For more information on running tests and available usage options, see the [Running Tests](../usage/README.md) guide.
+For more information on running tests and available usage options, see the [Running Tests](../4%20-%20usage/README.md) guide.
