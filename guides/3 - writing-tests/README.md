@@ -2,16 +2,16 @@
 
 This guide explains how to write test contracts for Skribe. Skribe enables property testing and fuzzing for Stylus smart contracts, allowing you to discover edge cases and validate contract behavior through automated test execution.
 
-Skribe supports writing tests in both Solidity and Rust (Stylus), and importantly, enables cross testing where tests written in one language can interact with contracts written in the other. This flexibility allows you to test your contracts using the tools and patterns you're most comfortable with, while still being able to verify interactions between different contract types.
+Skribe supports writing tests in both Solidity and Rust (Stylus), and importantly, enables cross-testing where tests written in one language can interact with contracts written in the other. This flexibility allows you to test your contracts using the tools and patterns you're most comfortable with, while still being able to verify interactions between different contract types.
 
 ## Cross Testing Support
 
-Skribe's cross testing capabilities enable two primary scenarios:
+Skribe's cross-testing capabilities enable two primary scenarios:
 
-- **Solidity tests interacting with Stylus contracts**: Write Foundry style tests in Solidity that deploy and interact with Stylus contracts compiled to WebAssembly;
+- **Solidity tests interacting with Stylus contracts**: Write Foundry-style tests in Solidity that deploy and interact with Stylus contracts compiled to WebAssembly;
 - **Stylus tests interacting with Solidity contracts**: Write test contracts in Rust that deploy and interact with traditional Solidity contracts.
 
-This cross testing support is particularly valuable when:
+This cross-testing support is particularly valuable when:
 - You have a mixed codebase with both Solidity and Stylus contracts that need to interact;
 - You want to test integration points between different contract types;
 - You prefer writing tests in one language but need to verify contracts written in another;
@@ -21,20 +21,20 @@ Tests are written using the native conventions of each ecosystem. Skribe does no
 
 ## Solidity Tests
 
-You can write tests using standard Foundry conventions for testing your Solidity contracts. All Foundry cheatcodes are fully supported, so if you're familiar with Foundry testing, you can apply the same patterns and techniques when using Skribe.
+You can write tests using standard Foundry conventions for testing your Solidity contracts. All major Foundry cheatcodes are fully supported, so if you're familiar with Foundry testing, you can apply the same patterns and techniques when using Skribe. To get a better perspective of supported cheatcodes and how to refer to them, see the [Cheatcodes section](./../5%20-%20cheatcodes/README.md) of this document.
 
 ### Test Structure
 
 Solidity tests follow the usual Foundry style with familiar conventions:
 
-- **`setUp()` function**: Called once before each test function to initialize test state
-- **`test_*` functions**: Individual test cases that are automatically discovered and executed
-- **Standard deployment patterns**: Use the `new` keyword to deploy contracts, just like in Foundry
-- **Full cheatcode access**: Access all Foundry cheatcodes via the `vm` object, including `vm.assume()`, `vm.prank()`, `vm.deal()`, and more
+- **`setUp()` function**: Called once before each test function to initialize test state;
+- **`test_*` functions**: Individual test cases that are automatically discovered and executed;
+- **Standard deployment patterns**: Use the `new` keyword to deploy contracts, just like in Foundry;
+- **Cheatcode access**: Access Foundry cheatcodes via the `vm` object, including `vm.assume()`, `vm.prank()`, `vm.deal()`, and more.
 
 ### Basic Example
 
-Here's a simple example demonstrating a Foundry style test:
+Here's a simple example demonstrating a Foundry-style test:
 
 ```solidity
 import "forge-std/Test.sol";
@@ -84,7 +84,7 @@ MyContract contract = new MyContract(arg1, arg2);
 
 ### Deploying Stylus Contracts from Solidity
 
-To deploy a Stylus contract from a Solidity test, you need to read the WASM bytecode file and wrap it in EVM constructor code that includes the Stylus specific prelude and version bytes. This process is necessary because Stylus contracts are compiled to WebAssembly, but they must be deployed through the EVM with a specific format.
+To deploy a Stylus contract from a Solidity test, you need to read the WASM bytecode file and wrap it in EVM constructor code that includes the Stylus-specific prelude and version bytes. This process is necessary because Stylus contracts are compiled to WebAssembly, but they must be deployed through the EVM with a specific format.
 
 **Step 1: Read the WASM file**
 
@@ -135,7 +135,7 @@ The `create` instruction takes three arguments: the value to send (0 in this cas
 
 **Complete Example**
 
-In Skribe's GitHub repository, see the example in `src/tests/integration/data/contracts/test-stylus-from-foundry/test/StylusHelloWorld.t.sol` for a complete implementation that demonstrates deploying a Stylus contract and interacting with it from a Solidity test (link).
+In [Skribe's GitHub repository](https://github.com/runtimeverification/skribe), see the example in `src/tests/integration/data/contracts/test-stylus-from-foundry/test/StylusHelloWorld.t.sol` for a complete implementation that demonstrates deploying a Stylus contract and interacting with it from a Solidity test (link).
 
 ## Stylus Tests
 
@@ -145,9 +145,9 @@ Tests are written as Stylus contracts using the `skribe-rs` library, which provi
 
 Stylus test contracts mirror Foundry's structure, providing a familiar testing experience:
 
-- **`set_up()` function**: Called once before each test function to initialize test state (note the snake_case naming, which is Rust convention)
-- **Public `test_*` functions**: Individual test cases that are automatically discovered and executed by Skribe
-- **Cheatcode access**: Access testing cheatcodes via `skribe::cheat()`, similar to Foundry's `vm` object
+- **`set_up()` function**: Called once before each test function to initialize test state (note the snake_case naming, which is Rust convention);
+- **Public `test_*` functions**: Individual test cases that are automatically discovered and executed by Skribe;
+- **Cheatcode access**: Access testing cheatcodes via `skribe::cheat()`, similar to Foundry's `vm` object.
 
 ### Basic Example Structure
 
@@ -184,16 +184,16 @@ Access cheatcodes through the `skribe::cheat()` function, which returns an inter
 
 **Common cheatcodes include:**
 
-- **`assume()`**: Discard fuzz inputs that don't meet a condition, generating new ones instead
-- **`deal()`**: Set an address's balance
-- **`prank()` / `startPrank()` / `stopPrank()`**: Manipulate `msg.sender` for subsequent calls
-- **`warp()`**: Set `block.timestamp`
-- **`roll()`**: Set `block.number`
-- **`store()` / `load()`**: Directly manipulate storage slots
-- **`readFile()` / `readFileBinary()`**: Read files from the filesystem
-- **`expectRevert()`**: Expect the next call to revert
+- **`assume()`**: Discard fuzz inputs that don't meet a condition, generating new ones instead;
+- **`deal()`**: Set an address's balance;
+- **`prank()` / `startPrank()` / `stopPrank()`**: Manipulate `msg.sender` for subsequent calls;
+- **`warp()`**: Set `block.timestamp`;
+- **`roll()`**: Set `block.number`;
+- **`store()` / `load()`**: Directly manipulate storage slots;
+- **`readFile()` / `readFileBinary()`**: Read files from the filesystem;
+- **`expectRevert()`**: Expect the next call to revert.
 
-For more information on the cheatcodes available, see the [Cheatcodes](../cheatcodes/README.md) guide.
+For more information on the cheatcodes available, see the [Cheatcodes](../5%20-%20cheatcodes/README.md) guide.
 
 **Example using `assume()`:**
 
@@ -275,7 +275,7 @@ The `deploy()` method takes the bytecode, the value to send (U256::ZERO for no v
 
 **Complete Example**
 
-See the example in `test-foundry-from-stylus/src/lib.rs` for a complete implementation that demonstrates deploying a Solidity contract and interacting with it from a Stylus test.
+In [Skribe's GitHub repository](https://github.com/runtimeverification/skribe), see the example in `src/tests/integration/data/contracts/test-foundry-from-stylus/src/lib.rs` for a complete implementation that demonstrates deploying a Solidity contract and interacting with it from a Stylus test.
 
 ### Deploying Stylus Contracts from Rust
 
@@ -321,7 +321,7 @@ The deployment process is the same as deploying Solidity contracts, but you use 
 
 **Complete Example**
 
-See the example in `test-hello-world/src/lib.rs` for a complete implementation that demonstrates deploying a Stylus contract from another Stylus test.
+In [Skribe's GitHub repository](https://github.com/runtimeverification/skribe), see the example in `src/tests/integration/data/contracts/test-hello-world/src/lib.rs` for a complete implementation that demonstrates deploying a Stylus contract from another Stylus test.
 
 ## Test Function Conventions
 
@@ -331,9 +331,9 @@ Understanding Skribe's test function conventions is important for writing tests 
 
 Test functions must follow these naming rules:
 
-- **Must start with `test_` prefix**: Skribe automatically discovers functions that begin with `test_`
-- **Should be public**: Test functions must be accessible, so they should be marked as `pub` in Rust
-- **Return unit type `()`**: Test functions should not return values; they indicate success by not panicking
+- **Must start with `test_` prefix**: Skribe automatically discovers functions that begin with `test_`;
+- **Should be public**: Test functions must be accessible, so they should be marked as `pub` in Rust;
+- **Return unit type `()`**: Test functions should not return values; they indicate success by not panicking.
 
 **Examples:**
 
@@ -374,11 +374,11 @@ Skribe will generate many different input combinations for `x` and `y`, helping 
 **Supported parameter types:**
 
 Common types you can use as test function parameters include:
-- `U256` for unsigned 256-bit integers
-- `Address` for Ethereum addresses
-- `bool` for boolean values
-- `Bytes` or `Vec<u8>` for byte arrays
-- Other Stylus SDK types
+- `U256` for unsigned 256-bit integers;
+- `Address` for Ethereum addresses;
+- `bool` for boolean values;
+- `Bytes` or `Vec<u8>` for byte arrays;
+- Other Stylus SDK types.
 
 **Using `assume()` to filter inputs:**
 
@@ -433,17 +433,17 @@ When an assertion fails, Skribe will report the failing input values, making it 
 
 ## Example Test Contracts
 
-The repository includes several example test contracts demonstrating different testing patterns and cross testing scenarios. These examples serve as reference implementations and are excellent starting points for understanding how to structure your own tests.
+[Skribe's repository](https://github.com/runtimeverification/skribe) includes several example test contracts demonstrating different testing patterns and cross-testing scenarios. These examples serve as reference implementations and are excellent starting points for understanding how to structure your own tests.
 
 **Available examples:**
 
-- **`test-hello-world`**: Basic Stylus test contract that demonstrates deploying and interacting with a Stylus contract. Shows fundamental testing patterns and cheatcode usage.
+- **`test-hello-world`**: Basic Stylus test contract that demonstrates deploying and interacting with a Stylus contract. Shows fundamental testing patterns and cheatcode usage;
 
-- **`test-foundry-from-stylus`**: Stylus test contract that deploys and interacts with Solidity contracts. Demonstrates cross testing from Stylus to Solidity, including loading Solidity bytecode and making cross contract calls.
+- **`test-foundry-from-stylus`**: Stylus test contract that deploys and interacts with Solidity contracts. Demonstrates cross-testing from Stylus to Solidity, including loading Solidity bytecode and making cross-contract calls;
 
-- **`test-stylus-from-foundry`**: Solidity test contract that deploys and interacts with Stylus contracts. Demonstrates cross testing from Solidity to Stylus, including WASM deployment and interaction patterns.
+- **`test-stylus-from-foundry`**: Solidity test contract that deploys and interacts with Stylus contracts. Demonstrates cross-testing from Solidity to Stylus, including WASM deployment and interaction patterns;
 
-- **`test-foundry-simple`**: Standard Foundry test contracts showing traditional Solidity testing patterns. Useful for understanding how Foundry conventions work within Skribe.
+- **`test-foundry-simple`**: Standard Foundry test contracts showing traditional Solidity testing patterns. Useful for understanding how Foundry conventions work within Skribe;
 
 - **`test-cheatcodes`**: Examples demonstrating various cheatcode operations available in Stylus tests, including `deal()`, `warp()`, `roll()`, `store()`, and `load()`.
 
