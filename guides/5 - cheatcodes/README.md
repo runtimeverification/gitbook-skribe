@@ -1,4 +1,4 @@
-# Cheatcodes
+# 5 - Cheatcodes
 
 Cheatcodes are special functions that allow you to manipulate blockchain state, control execution flow, and access testing utilities during test execution. Skribe provides cheatcodes for both Solidity and Rust test contracts.
 

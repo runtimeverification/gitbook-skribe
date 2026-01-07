@@ -1,4 +1,4 @@
-# Manual Installation
+# 2 - Manual Installation
 
 This guide covers building and installing Skribe from source. For prerequisites, refer to the official documentation of each tool.
 

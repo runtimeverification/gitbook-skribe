@@ -1,4 +1,4 @@
-# Quick Start
+# 1 -Quick Start
 
 This guide provides the fastest way to get Skribe up and running using `kup`, a tool for installing and managing K framework based projects.
 

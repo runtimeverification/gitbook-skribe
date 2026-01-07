@@ -1,4 +1,4 @@
-# Writing Tests
+# 3 - Writing Tests
 
 This guide explains how to write test contracts for Skribe. Skribe enables property testing and fuzzing for Stylus smart contracts, allowing you to discover edge cases and validate contract behavior through automated test execution.
 

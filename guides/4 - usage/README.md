@@ -1,4 +1,4 @@
-# Usage
+# 4 - Usage
 
 This guide covers how to use Skribe's command line interface to build and run tests.
 
