@@ -4,9 +4,13 @@ This guide provides the fastest way to get Skribe up and running using `kup`, a 
 
 ## Installation
 
+Although we recommend following the steps shown in this section for the Skribe's installation, instructions to help with the project's manual build and installation are available in the [Manual Installation section](./../2%20-%20manual-installation/README.md).
+
+The straightforward approach to installing Skribe is described in the steps below:
+
 ### Step 1: Install kup
 
-Install kup using the official installer:
+Install `kup` using the official installer:
 
 ```bash
 bash <(curl https://kframework.org/install)
@@ -14,13 +18,13 @@ bash <(curl https://kframework.org/install)
 
 ### Step 2: Verify kup Installation
 
-Test that kup is working correctly:
+Test that `kup` is working correctly:
 
 ```bash
 kup list
 ```
 
-This command lists all available K framework projects that can be installed via kup.
+This command lists all available K framework projects that can be installed via `kup`.
 
 ### Step 3: Install Skribe
 
@@ -44,7 +48,7 @@ You should see the Skribe command help output listing the available `build` and 
 
 ## Running Your First Test
 
-Skribe includes example test contracts in its [GitHub repository](https://github.com/runtimeverification/skribe/). We recommend starting with the `test-hello-world` contract located at `src/tests/integration/data/contracts/test-hello-world`.
+Skribe includes example test contracts in its [GitHub repository](https://github.com/runtimeverification/skribe/). We recommend starting with the `test-hello-world` contract located at `src/tests/integration/data/contracts/test-hello-world` ([ref](https://github.com/runtimeverification/skribe/tree/master/src/tests/integration/data/contracts/test-hello-world)).
 
 ### Step 1: Navigate to a Test Contract
 
@@ -70,7 +74,7 @@ skribe run --id testSelfNumber --max-examples 200
 
 This executes the `testSelfNumber` test function with 200 randomized input examples. Skribe will display a progress bar and report the results.
 
-**Note**: Test function IDs use camelCase format. If a Rust function named `test_self_number` it will be referenced as `testSelfNumber` when using the `--id` flag.
+**Note**: Test function IDs use camelCase format. If a Rust function named `test_self_number` is referenced, it will be referenced as `testSelfNumber` when using the `--id` flag.
 
 ### Running All Tests
 
