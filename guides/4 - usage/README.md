@@ -1,13 +1,13 @@
 # 4 - Usage
 
-This guide covers how to use Skribe's command line interface to build and run tests.
+This guide covers how to use Skribe's command-line interface to build and run tests.
 
 ## Command Overview
 
 Skribe provides two main commands:
 
-- `skribe build`: Compiles test contracts to WebAssembly
-- `skribe run`: Executes fuzz tests on compiled contracts
+- `skribe build`: Compiles test contracts to WebAssembly;
+- `skribe run`: Executes fuzz tests on compiled contracts.
 
 Both commands support the `--help` flag to display detailed usage information.
 
@@ -47,19 +47,19 @@ This runs all discovered test functions in the current directory with the defaul
 
 ### Options
 
-- `--directory DIRECTORY`, `-C DIRECTORY`: Specify the test contract directory. Defaults to the current working directory.
-- `--id ID`: Run a specific test function by name. If not specified, all test functions are executed.
+- `--directory DIRECTORY`, `-C DIRECTORY`: Specify the test contract directory. Defaults to the current working directory;
+- `--id ID`: Run a specific test function by name. If not specified, all test functions are executed;
 - `--max-examples MAX_EXAMPLES`: Maximum number of fuzzing inputs to generate. Default is 100.
 
 ### Test Execution Flow
 
 When you run `skribe run`, it performs the following steps:
 
-1. **Create contracts**: Reads configuration files and deploys any required contract dependencies
-2. **Initialize the test contract**: Deploys the test contract and calls its initialization function if present
-3. **Discover test functions**: Scans for functions with the `test_` prefix
-4. **Execute fuzz tests**: Runs each test function with randomized inputs up to the specified maximum
-5. **Report results**: Displays progress bars and reports any test failures
+1. **Create contracts**: Reads configuration files and deploys any required contract dependencies;
+2. **Initialize the test contract**: Deploys the test contract and calls its initialization function if present;
+3. **Discover test functions**: Scans for functions with the `test_` prefix;
+4. **Execute fuzz tests**: Runs each test function with randomized inputs up to the specified maximum;
+5. **Report results**: Displays progress bars and reports any test failures.
 
 ### Examples
 
@@ -130,9 +130,9 @@ skribe run --id testEdgeCase --max-examples 50
 
 ## Tips
 
-- Build contracts before running tests. The `run` command requires a compiled contract
-- Use `--max-examples` to control test execution time. Higher values provide more thorough testing but take longer
-- Test function discovery is automatic. Any function starting with `test_` will be found and executed
-- Progress bars show real time execution status for each test function
-- Test failures include the specific input that caused the failure, making debugging easier
+- Build contracts before running tests. The `run` command requires a compiled contract;
+- Use `--max-examples` to control test execution time. Higher values provide more thorough testing but take longer;
+- Test function discovery is automatic. Any function starting with `test_` will be found and executed;
+- Progress bars show real-time execution status for each test function;
+- Test failures include the specific input that caused the failure, making debugging easier.
 
