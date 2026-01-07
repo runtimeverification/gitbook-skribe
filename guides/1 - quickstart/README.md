@@ -84,9 +84,9 @@ skribe run --max-examples 200
 
 Now that you have Skribe installed and running, you can:
 
-- Go through our usage section to learn more about the different options available to run tests, as well as learning how to write your own test contracts.
-- Explore the example test contracts in `src/tests/integration/data/contracts/`
-- Review available cheatcodes for advanced testing scenarios
+- Learn how to write your own test contracts in the [Writing Tests section](https://github.com/runtimeverification/gitbook-skribe/blob/main/guides/3%20-%20writing-tests/README.md), as well as take a look at the [Usage section](https://github.com/runtimeverification/gitbook-skribe/blob/main/guides/4%20-%20usage/README.md) to learn more about the different options available to run tests.
+- Explore the example test contracts in Skribe's repository ([GitHub link](https://github.com/runtimeverification/skribe/tree/master/src/tests/integration/data/contracts)).
+- Review available cheatcodes for advanced testing scenarios in the [Cheatcodes section](https://github.com/runtimeverification/gitbook-skribe/blob/main/guides/5%20-%20cheatcodes/README.md).
 
 ## Getting Help
 
