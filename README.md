@@ -10,4 +10,4 @@ The framework provides cheatcodes for manipulating blockchain state (available f
 
 Whether you are building a new Stylus contract or maintaining an existing one, Skribe helps ensure your code is robust, secure, and ready for production deployment.
 
-To get started, please refer to the [Quick Start](./guides/quickstart/README.md) guide.
+To get started, please refer to the [Quick Start](./guides/1%20-%20quickstart/README.md) guide.
