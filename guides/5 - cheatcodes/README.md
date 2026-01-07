@@ -1,12 +1,12 @@
 # 5 - Cheatcodes
 
-Cheatcodes are special functions that allow you to manipulate blockchain state, control execution flow, and access testing utilities during test execution. Skribe provides cheatcodes for both Solidity and Rust test contracts.
+Cheatcodes are special functions that allow you to manipulate blockchain state, control execution flow, and access testing utilities during test execution. Skribe provides cheatcodes for both Solidity and Rust test contracts. To achieve this functionality, Skribe, under the hood, uses the shared implementation of Foundry's cheatcodes used by Kontrol. For a comprehensive understanding of the cheatcodes supported by Kontrol and, consequently, Skribe, please refer to [Kontrol's documentation on cheatcodes](https://docs.runtimeverification.com/kontrol/cheatsheets/cheatcodes). 
 
 ## Solidity Cheatcodes
 
 In Solidity tests, cheatcodes are accessed through the `vm` object, following standard Foundry conventions. Skribe supports all standard Foundry cheatcodes.
 
-For detailed documentation on these cheatcodes, including parameters, return values, and usage examples, refer to the [Foundry Cheatcodes documentation](https://book.getfoundry.sh/cheatcodes/).
+For detailed documentation on the internal working of these cheatcodes, including parameters, return values, and usage examples, refer to the [Foundry Cheatcodes documentation](https://book.getfoundry.sh/cheatcodes/).
 
 ## Rust Cheatcodes
 
@@ -233,6 +233,6 @@ cheat().assert_true(&mut *self, condition).unwrap();
 
 ## Additional Notes
 
-Both Solidity and Rust cheatcodes provide equivalent functionality. The main difference is the syntax: Solidity uses the `vm` object while Rust uses the `cheat()` function interface with Rust specific types and error handling.
+Both Solidity and Rust cheatcodes provide equivalent functionality. The main difference is the syntax: Solidity uses the `vm` object while Rust uses the `cheat()` function interface with Rust-specific types and error handling.
 
-For examples of cheatcode usage in Rust tests, see the test contracts in `src/tests/integration/data/contracts/`, particularly `test-cheatcodes` which demonstrates various cheatcode operations.
+For examples of cheatcode usage in Rust tests, in [Skribe's GitHub repository](https://github.com/runtimeverification/skribe), see the test contracts in `src/tests/integration/data/contracts/`, particularly `test-cheatcodes`, which demonstrates various cheatcode operations.
